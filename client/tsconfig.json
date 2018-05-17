@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noEmitOnError": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "outDir": "./dist/",
+    "jsx": "react",
+    "strictNullChecks": true
+  }
+}
