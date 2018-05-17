@@ -1,0 +1,20 @@
+header {
+  padding: 10px 30px;
+  display: flex;
+}
+
+#nav-title {
+  margin: 0;
+  display: inline-block;
+}
+
+nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.nav-link {
+  margin-left: 20px;
+}

@@ -3,7 +3,7 @@ const webpack = require("webpack");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./src/index.ts"
+    index: "./src/index.tsx"
   },
   devtool: "inline-source-map",
   module: {
@@ -20,7 +20,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".js", ".css"]
   },
   output: {
     filename: "[name].bundle.js",
