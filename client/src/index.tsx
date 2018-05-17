@@ -7,5 +7,5 @@ const uname = "Brooks Mikkelsen";
 
 ReactDOM.render(
   <Header username={uname} />,
-  document.getElementById("body-element")
+  document.getElementById("react-root")
 );

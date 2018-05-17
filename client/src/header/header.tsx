@@ -5,18 +5,30 @@ export interface HeaderProps {
   username: string;
 }
 
-export const Header: React.SFC<HeaderProps> = (props) => {
+export const Header: React.SFC<HeaderProps> = props => {
+  const loginLink = (
+    <a className="nav-link" href="login.html">
+      Login
+    </a>
+  );
+  const currentUser = props.username ? (
+    <span>Logged in as {props.username}</span>
+  ) : (
+    loginLink
+  );
+
   return (
     <header>
-      <h1 id="nav-title">Expense Tracker</h1>
-      <nav>
-        <a className="nav-link" href="index.html">
-          Home
-        </a>
-        <a className="nav-link" href="login.html">
-          Login
-        </a>
-      </nav>
+      <div id="nav-container">
+        <h1 id="nav-title">Expense Tracker</h1>
+        <nav>
+          <a className="nav-link" href="index.html">
+            Home
+          </a>
+          {loginLink}
+        </nav>
+      </div>
+      <div id="current-user-header">{currentUser}</div>
     </header>
   );
 };
