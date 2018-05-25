@@ -1,0 +1,27 @@
+.expense {
+  border-radius: 3px;
+  width: 400px;
+  border: 1px solid #ccc;
+}
+
+.expense-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.expense-body {
+  padding: 10px;
+}
+
+.expense-pay-button {
+  border: none;
+  background-color: rgb(255, 214, 81);
+  border-radius: 100px;
+  padding: 3px 7px;
+}
+
+.expense-paid {
+  color: gray;
+}
