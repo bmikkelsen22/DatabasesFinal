@@ -3,3 +3,8 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
 }
+
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
