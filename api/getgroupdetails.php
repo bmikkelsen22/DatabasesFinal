@@ -8,7 +8,7 @@ if (!$conn) {
 }
 
 $gid = $_GET['gid'];
-$query = "SELECT * FROM groups WHERE gid = '$gid'";
+$query = "SELECT * FROM Groups WHERE gID = '$gid'";
 
 $result = $conn->query($query);
 if (!$result) {
