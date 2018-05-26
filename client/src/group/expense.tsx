@@ -1,16 +1,18 @@
 import * as React from "react";
-import { ExpenseModel } from "../models";
+import { ExpenseModel, MemberModel } from "../models";
 import "./expense.css";
 
 export interface ExpenseProps {
   expense: ExpenseModel;
   onPay: (expense: ExpenseModel) => void;
-  hasPaid: boolean;
+  onDelete: (expense: ExpenseModel) => void;
+  currentMember: MemberModel;
 }
 
 export const Expense: React.SFC<ExpenseProps> = props => {
   let payNowBtn: JSX.Element;
-  if (props.hasPaid) {
+  const amtToPay = props.expense.eCostTotal / props.expense.users.length;
+  if (props.expense.users.find(u => u.username === props.currentMember.username)) {
     payNowBtn = <div className="expense-paid">All paid up!</div>;
   } else {
     payNowBtn = (
@@ -18,12 +20,26 @@ export const Expense: React.SFC<ExpenseProps> = props => {
         className="expense-pay-button"
         onClick={() => props.onPay(props.expense)}
       >
-        Pay ${props.expense.eCostTotal/}
+        Pay ${amtToPay.toFixed(2)}
+        <br />
+        <span className="small-font">
+          of ${props.expense.eCostTotal.toFixed(2)}
+        </span>
       </button>
     );
   }
 
-  const havePaidUsers = props.expense.paid.map(p => p.username).join(", ");
+  const havePaidUsers =
+    props.expense.users
+      .filter(u => u.paid)
+      .map(u => u.username)
+      .join(", ") || "none";
+
+  const notPaidUsers =
+    props.expense.users
+      .filter(u => u.paid)
+      .map(u => u.username)
+      .join(", ") || "none";
 
   return (
     <div className="expense">
@@ -35,7 +51,8 @@ export const Expense: React.SFC<ExpenseProps> = props => {
         <div />
       </div>
       <div className="expense-body">
-        <p>{havePaidUsers} have paid.</p>
+        <p>Has paid: {havePaidUsers}</p>
+        <p>Not paid yet: {notPaidUsers}</p>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ export interface GroupModel {
   gName: string;
   gDesc: string;
   expenses: ExpenseModel[];
-  members: UserModel[];
+  members: MemberModel[];
 }
 
 export interface UserModel {
@@ -13,6 +13,10 @@ export interface UserModel {
   email: string;
 }
 
+export interface MemberModel extends UserModel {
+  mAdmin: boolean;
+}
+
 export interface ExpenseModel {
   eID: number;
   gID: number;
@@ -20,7 +24,7 @@ export interface ExpenseModel {
   eDesc: string;
   eCostTotal: number;
   eCostPaid: number;
-  paid: ExpensesPaid[];
+  users: ExpensesPaid[];
 }
 
 export interface ExpensesPaid {

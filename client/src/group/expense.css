@@ -25,3 +25,7 @@
 .expense-paid {
   color: gray;
 }
+
+.small-font {
+  font-size: .6em;
+}
