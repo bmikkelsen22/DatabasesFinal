@@ -1,7 +1,7 @@
 <?php
 include 'connectvars.php'; 
 
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if (!$conn) {
   http_response_code(500);
   die("Error connecting to database");
@@ -10,7 +10,7 @@ if (!$conn) {
 $gid = $_GET['gid'];
 $query = "SELECT * FROM groups WHERE gid = '$gid'";
 
-$result = mysqli_query($conn, $query);
+$result = $conn->query($query);
 if (!$result) {
   http_response_code(500);
   die("Error executing query");
