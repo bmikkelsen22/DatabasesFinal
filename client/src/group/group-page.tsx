@@ -4,7 +4,12 @@ import "../site.css";
 import { Header } from "../header/header";
 import { Modal } from "../modal/modal";
 import { GroupModel, UserModel, ExpenseModel, MemberModel } from "../models";
-import { getCurrentMember, getGroupDetails } from "./group-api";
+import {
+  getCurrentMember,
+  getGroupDetails,
+  payExpense,
+  deleteExpense
+} from "./group-api";
 import { PlaceholderPage } from "../error-component";
 import { ExpenseContainer } from "./expense-container";
 
@@ -45,9 +50,40 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
     }
   }
 
-  onExpensePaid = (expense: ExpenseModel) => {};
+  onExpensePaid = (expense: ExpenseModel) => {
+    const { currentMember, groupModel } = this.state;
+    if (!currentMember || !groupModel) {
+      return;
+    }
+    payExpense(expense.eID, currentMember.username)
+      .then(() => {
+        const expPaid = expense.users.find(
+          u => u.username === currentMember.username
+        )!;
+        expPaid.pPaid = true;
 
-  onExpenseDeleted = (expense: ExpenseModel) => {};
+        this.setState({ groupModel: { ...groupModel } });
+      })
+      .catch(e => alert(e));
+  };
+
+  onExpenseDeleted = (expense: ExpenseModel) => {
+    const { groupModel } = this.state;
+    if (!groupModel) {
+      return;
+    }
+    if (!confirm("Are you sure you want to delete this expense?")) {
+      return;
+    }
+    deleteExpense(expense.eID)
+      .then(() => {
+        const expenses = groupModel.expenses.filter(e => e != expense);
+        this.setState({
+          groupModel: { ...groupModel, expenses }
+        });
+      })
+      .catch(e => alert(e));
+  };
 
   renderPageContent() {
     const { currentMember, groupModel } = this.state;

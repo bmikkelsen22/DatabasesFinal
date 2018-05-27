@@ -12,3 +12,19 @@ export async function getGroupDetails(gid?: number): Promise<GroupModel> {
   const result = await getRequest(`../../api/getgroupdetails.php?gid=${gid}`);
   return JSON.parse(result);
 }
+
+export async function deleteExpense(eID: number) {
+  const res = await getRequest(`../../api/deleteexpense.php?eid=${eID}`);
+  if (res !== "Deleted") {
+    throw new Error(res);
+  }
+}
+
+export async function payExpense(eID: number, username: string) {
+  const res = await getRequest(
+    `../../api/payexpense.php?eid=${eID}&username=${username}`
+  );
+  if (res !== "Marked paid") {
+    throw new Error(res);
+  }
+}
