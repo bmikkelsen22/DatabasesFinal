@@ -45,22 +45,22 @@ export const groupDetailsMock: GroupDetailsResponse = {
     {
       eID: 1,
       username: "brooks",
-      paid: false
+      pPaid: false
     },
     {
       eID: 1,
       username: "user2",
-      paid: true
+      pPaid: true
     },
     {
       eID: 2,
       username: "brooks",
-      paid: false
+      pPaid: false
     },
     {
       eID: 2,
       username: "user2",
-      paid: false
+      pPaid: false
     }
   ]
 };

@@ -14,7 +14,7 @@ export const Expense: React.SFC<ExpenseProps> = props => {
   const amtToPay = props.expense.eCostTotal / props.expense.users.length;
   if (
     props.expense.users.find(
-      u => u.username === props.currentMember.username && u.paid
+      u => u.username === props.currentMember.username && u.pPaid
     )
   ) {
     payNowBtn = <div className="expense-paid">All paid up!</div>;
@@ -35,13 +35,13 @@ export const Expense: React.SFC<ExpenseProps> = props => {
 
   const havePaidUsers =
     props.expense.users
-      .filter(u => u.paid)
+      .filter(u => u.pPaid)
       .map(u => u.username)
       .join(", ") || "none";
 
   const notPaidUsers =
     props.expense.users
-      .filter(u => !u.paid)
+      .filter(u => !u.pPaid)
       .map(u => u.username)
       .join(", ") || "none";
 

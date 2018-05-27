@@ -32,7 +32,7 @@ export class ExpenseContainer extends React.Component<
 
   render() {
     const incompleteExpenses = this.props.expenses
-      .filter(e => !e.users.every(u => u.paid))
+      .filter(e => !e.users.every(u => u.pPaid))
       .map(e => (
         <Expense
           expense={e}
@@ -45,7 +45,7 @@ export class ExpenseContainer extends React.Component<
     let completeExpenses: JSX.Element[];
     if (this.state.allExpanded) {
       const completeExpenses = this.props.expenses
-        .filter(e => e.users.every(u => u.paid))
+        .filter(e => e.users.every(u => u.pPaid))
         .map(e => (
           <Expense
             expense={e}

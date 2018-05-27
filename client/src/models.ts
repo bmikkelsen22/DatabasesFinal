@@ -30,7 +30,7 @@ export interface ExpenseModel {
 export interface ExpensesPaid {
   eID: number;
   username: string;
-  paid: boolean;
+  pPaid: boolean;
 }
 
 export interface NotificationsModel {
