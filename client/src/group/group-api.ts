@@ -1,5 +1,5 @@
 import { MemberModel, ExpenseModel, ExpensesPaid, GroupModel } from "../models";
-import { userMock, groupDetailsMock } from "./expense-mocks";
+import { userMock } from "./expense-mocks";
 import { getRequest } from "../api-calls";
 
 export function getCurrentMember(groupMembers: MemberModel[]) {
