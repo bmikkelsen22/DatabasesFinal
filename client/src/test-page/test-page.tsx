@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Header } from "../header/header";
 import { Modal } from "../modal/modal";
+import { userMock } from "../group/expense-mocks";
 
 export interface TestPageState {
   modalVisible: boolean;
@@ -23,7 +24,7 @@ export class TestPage extends React.Component<{}, TestPageState> {
   render() {
     return (
       <div>
-        <Header username="Brooks M." />
+        <Header currentUser={userMock} />
         <button onClick={this.toggleModal}>Show Modal</button>
         <Modal
           title="This is the modal title."

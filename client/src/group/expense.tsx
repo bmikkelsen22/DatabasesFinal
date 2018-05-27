@@ -12,12 +12,12 @@ export interface ExpenseProps {
 export const Expense: React.SFC<ExpenseProps> = props => {
   let payNowBtn: JSX.Element;
   const amtToPay = props.expense.eCostTotal / props.expense.users.length;
-  if (props.expense.users.find(u => u.username === props.currentMember.username)) {
+  if (props.expense.users.find(u => u.username === props.currentMember.username && u.paid)) {
     payNowBtn = <div className="expense-paid">All paid up!</div>;
   } else {
     payNowBtn = (
       <button
-        className="expense-pay-button"
+        className="yellow-button"
         onClick={() => props.onPay(props.expense)}
       >
         Pay ${amtToPay.toFixed(2)}
@@ -37,7 +37,7 @@ export const Expense: React.SFC<ExpenseProps> = props => {
 
   const notPaidUsers =
     props.expense.users
-      .filter(u => u.paid)
+      .filter(u => !u.paid)
       .map(u => u.username)
       .join(", ") || "none";
 
@@ -48,7 +48,7 @@ export const Expense: React.SFC<ExpenseProps> = props => {
           <h4>{props.expense.eName}</h4>
           <p>{props.expense.eDesc}</p>
         </div>
-        <div />
+        {payNowBtn}
       </div>
       <div className="expense-body">
         <p>Has paid: {havePaidUsers}</p>

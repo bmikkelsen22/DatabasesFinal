@@ -1,8 +1,9 @@
 import * as React from "react";
 import "./header.css";
+import { UserModel } from "../models";
 
 export interface HeaderProps {
-  username: string;
+  currentUser?: UserModel;
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
@@ -11,8 +12,8 @@ export const Header: React.SFC<HeaderProps> = props => {
       Login
     </a>
   );
-  const currentUser = props.username ? (
-    <span>Logged in as {props.username}</span>
+  const currentUser = props.currentUser ? (
+    <span>Logged in as {props.currentUser.username}</span>
   ) : (
     loginLink
   );

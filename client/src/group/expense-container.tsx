@@ -39,6 +39,7 @@ export class ExpenseContainer extends React.Component<
           onDelete={this.props.onDelete}
           onPay={this.props.onPay}
           currentMember={this.props.currentMember}
+          key={e.eID}
         />
       ));
     let completeExpenses: JSX.Element[];
@@ -51,6 +52,7 @@ export class ExpenseContainer extends React.Component<
             onDelete={this.props.onDelete}
             onPay={this.props.onPay}
             currentMember={this.props.currentMember}
+            key={e.eID}
           />
         ));
     }
@@ -58,14 +60,19 @@ export class ExpenseContainer extends React.Component<
     const toggleMessage = this.state.allExpanded
       ? "Hide complete expenses"
       : "Show all expenses";
+    const completeHeader = this.state.allExpanded ? (
+      <h3>Completed Expenses</h3>
+    ) : (
+      undefined
+    );
 
     return (
       <div className="expense-container">
-        <h2>Incomplete Expenses</h2>
-        {incompleteExpenses}
-        <a onClick={this.toggleShowAll}>{toggleMessage}</a>
-        <h2>Complete Expenses</h2>
-        {this.state.allExpanded ? completeExpenses! : undefined}
+        <h3>Incomplete Expenses</h3>
+        <div className="expense-wrapper">{incompleteExpenses}</div>
+        {completeHeader}
+        <div className="expense-wrapper">{this.state.allExpanded ? completeExpenses! : undefined}</div>
+        <button onClick={this.toggleShowAll} className="gray-button">{toggleMessage}</button>
       </div>
     );
   }

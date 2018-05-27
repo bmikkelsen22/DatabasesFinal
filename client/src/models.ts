@@ -28,7 +28,7 @@ export interface ExpenseModel {
 }
 
 export interface ExpensesPaid {
-  eID: string;
+  eID: number;
   username: string;
   paid: boolean;
 }

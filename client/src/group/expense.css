@@ -1,25 +1,25 @@
 .expense {
   border-radius: 3px;
-  width: 400px;
   border: 1px solid #ccc;
+  width: 400px;
+  margin: 5px;
+}
+
+.expense p, .expense h4 {
+  margin: 0;
 }
 
 .expense-header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: 10px;
+  background-color: #eee;
   border-bottom: 1px solid #ccc;
 }
 
 .expense-body {
   padding: 10px;
-}
-
-.expense-pay-button {
-  border: none;
-  background-color: rgb(255, 214, 81);
-  border-radius: 100px;
-  padding: 3px 7px;
 }
 
 .expense-paid {
@@ -28,4 +28,9 @@
 
 .small-font {
   font-size: .6em;
+}
+
+.expense-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
