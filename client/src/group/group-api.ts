@@ -9,6 +9,6 @@ export function getCurrentMember(groupMembers: MemberModel[]) {
 }
 
 export async function getGroupDetails(gid?: number): Promise<GroupModel> {
-  const result = await getRequest(`../../api/getgroupdetails.php?gID=${gid}`);
+  const result = await getRequest(`../../api/getgroupdetails.php?gid=${gid}`);
   return JSON.parse(result);
 }
