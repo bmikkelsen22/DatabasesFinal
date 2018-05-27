@@ -24,7 +24,7 @@ if ($result->num_rows != 1) {
 $jsonResult = $result->fetch_array(MYSQL_ASSOC);
 
 //members
-$query = "SELECT Users.username, Users.firstName, Users.lastName, Users.email FROM Users, Membership WHERE Users.username = Membership.username AND Membership.gID = '$gid'";
+$query = "SELECT Users.username, Users.firstName, Users.lastName, Users.email, Membership.mAdmin FROM Users, Membership WHERE Users.username = Membership.username AND Membership.gID = '$gid'";
 
 $result = $conn->query($query);
 if (!$result) {
@@ -37,6 +37,28 @@ while($row = $result->fetch_array(MYSQL_ASSOC)) {
   $membersArray[] = $row;
 }
 $jsonResult["members"] = $membersArray;
+
+//expenses
+$query = "SELECT * FROM Expenses WHERE gID = '$gid'";
+
+$result = $conn->query($query);
+if (!$result) {
+  http_response_code(500);
+  die("Error executing query");
+}
+
+$expensesArray = array();
+while($row = $result->fetch_array(MYSQL_ASSOC)) {
+  $query = "SELECT * FROM Expenses WHERE gID = '$gid'";
+  $result = $conn->query($query);
+  $epArray = array();
+  while($epRow = $result->fetch_array(MYSQL_ASSOC)) {
+    $epArray[] = $epRow;
+  }
+  $row["users"] = $epArray;
+  $membersArray[] = $row;
+}
+$jsonResult["expenses"] = $membersArray;
 
 echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 $conn->close();
