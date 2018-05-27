@@ -49,16 +49,19 @@ if (!$result) {
 
 $expensesArray = array();
 while($row = $result->fetch_array(MYSQL_ASSOC)) {
-  $query = "SELECT * FROM Expenses WHERE gID = '$gid'";
-  $result = $conn->query($query);
+  $eID = $row['eID'];
+  //expenses paid
+  $epQuery = "SELECT * FROM ExpensesPaid WHERE eID = '$eID'";
+  $epResult = $conn->query($epQuery);
   $epArray = array();
-  while($epRow = $result->fetch_array(MYSQL_ASSOC)) {
+  while($epRow = $epResult->fetch_array(MYSQL_ASSOC)) {
     $epArray[] = $epRow;
   }
+  //add expenses paid to expenses, push that to array
   $row["users"] = $epArray;
-  $membersArray[] = $row;
+  $expensesArray[] = $row;
 }
-$jsonResult["expenses"] = $membersArray;
+$jsonResult["expenses"] = $expensesArray;
 
 echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 $conn->close();
