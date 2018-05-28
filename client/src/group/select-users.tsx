@@ -51,7 +51,7 @@ export class SelectUsers extends React.Component<
         />
         <div>
           {u.firstName} {u.lastName} <br />
-          <span className="small-text">{u.username}</span>
+          <span className="small-font">{u.username}</span>
         </div>
       </div>
     ));

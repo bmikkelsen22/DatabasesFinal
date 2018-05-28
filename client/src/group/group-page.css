@@ -15,4 +15,10 @@
   padding: 4px;
   border: 1px solid darkgray;
   border-radius: 3px;
+  align-items: center;
+  margin: 3px;
+}
+
+.align-right {
+  text-align: right;
 }

@@ -136,9 +136,11 @@ export class AddExpense extends React.Component<
               users={this.props.groupMembers}
               onUserSelected={this.updateSelectedUsers}
             />
-            <button className="yellow-button" onClick={this.addExpense}>
-              Add expense
-            </button>
+            <div className="align-right">
+              <button className="yellow-button" onClick={this.addExpense}>
+                Add expense
+              </button>
+            </div>
           </tbody>
         </table>
       </Modal>
