@@ -103,43 +103,45 @@ export class AddExpense extends React.Component<
         title="Add a new expense"
       >
         <table className="add-expense-table">
-          <tr>
-            <td>Expense name: </td>
-            <td>
-              <input
-                type="text"
-                value={this.state.expenseName}
-                onChange={this.updateExpenseName}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Expense description: </td>
-            <td>
-              <input
-                type="text"
-                value={this.state.expenseDesc}
-                onChange={this.updateExpenseDesc}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Amount: </td>
-            <td>
-              <input
-                type="text"
-                value={this.state.cost}
-                onChange={this.updateCost}
-              />
-            </td>
-          </tr>
-          <SelectUsers
-            users={this.props.groupMembers}
-            onUserSelected={this.updateSelectedUsers}
-          />
-          <button className="yellow-button" onClick={this.addExpense}>
-            Add expense
-          </button>
+          <tbody>
+            <tr>
+              <td>Expense name: </td>
+              <td>
+                <input
+                  type="text"
+                  value={this.state.expenseName}
+                  onChange={this.updateExpenseName}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Expense description: </td>
+              <td>
+                <input
+                  type="text"
+                  value={this.state.expenseDesc}
+                  onChange={this.updateExpenseDesc}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Amount: </td>
+              <td>
+                <input
+                  type="text"
+                  value={this.state.cost}
+                  onChange={this.updateCost}
+                />
+              </td>
+            </tr>
+            <SelectUsers
+              users={this.props.groupMembers}
+              onUserSelected={this.updateSelectedUsers}
+            />
+            <button className="yellow-button" onClick={this.addExpense}>
+              Add expense
+            </button>
+          </tbody>
         </table>
       </Modal>
     );

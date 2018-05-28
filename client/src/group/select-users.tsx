@@ -46,10 +46,8 @@ export class SelectUsers extends React.Component<
         onChange={() => this.toggleUser(u, i)}
         checked={u.selected}
         key={u.username}
-      >
-        {u.firstName} {u.lastName}
-        <span className="small-text">{u.username}</span>
-      </input>
+        value={u.firstName + " " + u.lastName}
+      />
     ));
 
     return <div className="select-users-container">{usersJsx}</div>;
