@@ -121,10 +121,12 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
 
   renderPageContent() {
     const { currentMember, groupModel } = this.state;
-    if (!currentMember) {
-      return <p>Please log in.</p>;
+    if (!this.props.groupId) {
+      return <p>Invalid group ID</p>;
     } else if (!groupModel) {
       return <p>Loading...</p>;
+    } else if (!currentMember) {
+      return <p>Please log in.</p>;
     }
 
     return (
