@@ -22,5 +22,5 @@ if ($conn->query($query) !== TRUE) {
   die("Error deleting");
 }
 
-http_response_code(200);
-die("Deleted");
+echo("Deleted");
+?>

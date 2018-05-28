@@ -16,5 +16,5 @@ if ($conn->query($query) !== TRUE) {
   die("Error marking paid");
 }
 
-http_response_code(200);
-die("Marked paid");
+echo("Marked paid");
+?>

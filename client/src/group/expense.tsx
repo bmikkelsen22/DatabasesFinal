@@ -14,7 +14,7 @@ export const Expense: React.SFC<ExpenseProps> = props => {
   const amtToPay = props.expense.eCostTotal / props.expense.users.length;
   if (
     props.expense.users.find(
-      u => u.username === props.currentMember.username && u.pPaid
+      u => u.username === props.currentMember.username && u.pPaid === 1
     )
   ) {
     payNowBtn = <div className="expense-paid">All paid up!</div>;

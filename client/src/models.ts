@@ -23,14 +23,14 @@ export interface ExpenseModel {
   eName: string;
   eDesc: string;
   eCostTotal: number;
-  eCostPaid: number;
+  eNumUsers: number;
   users: ExpensesPaid[];
 }
 
 export interface ExpensesPaid {
   eID: number;
   username: string;
-  pPaid: boolean;
+  pPaid: number;
 }
 
 export interface NotificationsModel {
