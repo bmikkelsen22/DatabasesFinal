@@ -73,12 +73,9 @@ export class AddExpense extends React.Component<
   };
 
   updateCost = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newCost = Number(event.target.value);
-    if (newCost) {
-      this.setState({
-        cost: newCost
-      });
-    }
+    this.setState({
+      cost: Number(event.target.value) || 0
+    });
   };
 
   updateSelectedUsers = (newSelectedUsers: SelectMember[]) => {
@@ -128,7 +125,7 @@ export class AddExpense extends React.Component<
               <td>Amount: </td>
               <td>
                 <input
-                  type="text"
+                  type="number"
                   value={this.state.cost}
                   onChange={this.updateCost}
                 />
