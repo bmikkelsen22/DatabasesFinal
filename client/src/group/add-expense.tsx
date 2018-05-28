@@ -24,13 +24,13 @@ export class AddExpense extends React.Component<
 > {
   constructor(props: AddExpenseProps) {
     super(props);
-    this.setState({
+    this.state = {
       showModal: false,
       expenseDesc: "",
       expenseName: "",
       selectedMembers: [],
       cost: 1
-    });
+    };
   }
 
   toggleModal = () => {
