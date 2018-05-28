@@ -28,8 +28,11 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
   constructor(props: GroupPageProps) {
     super(props);
     this.state = {};
-    if (props.groupId) {
-      getGroupDetails(props.groupId).then(this.onGroupModelLoaded);
+  }
+
+  componentDidMount() {
+    if (this.props.groupId) {
+      getGroupDetails(this.props.groupId).then(this.onGroupModelLoaded);
     }
   }
 
