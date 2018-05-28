@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ExpenseModel, MemberModel } from "../models";
 import { Modal } from "../modal/modal";
+import { SelectMember, SelectUsers } from "./select-users";
 
 export interface AddExpenseProps {
   onExpenseAdded: (expense: ExpenseModel) => void;
@@ -13,7 +14,7 @@ export interface AddExpenseState {
   showModal: boolean;
   expenseName: string;
   expenseDesc: string;
-  selectedMembers: MemberModel[];
+  selectedMembers: SelectMember[];
   cost: number;
 }
 
@@ -56,6 +57,7 @@ export class AddExpense extends React.Component<
       eCostTotal: this.state.cost,
       users: expensesPaid
     });
+    this.toggleModal();
   };
 
   updateExpenseName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,6 +81,12 @@ export class AddExpense extends React.Component<
     }
   };
 
+  updateSelectedUsers = (newSelectedUsers: SelectMember[]) => {
+    this.setState({
+      selectedMembers: newSelectedUsers
+    });
+  };
+
   render() {
     if (!this.state.showModal) {
       return (
@@ -87,8 +95,6 @@ export class AddExpense extends React.Component<
         </button>
       );
     }
-
-    const 
 
     return (
       <Modal
@@ -127,9 +133,13 @@ export class AddExpense extends React.Component<
               />
             </td>
           </tr>
-          <div className="user-checkbox-container">
-            
-          </div>
+          <SelectUsers
+            users={this.props.groupMembers}
+            onUserSelected={this.updateSelectedUsers}
+          />
+          <button className="yellow-button" onClick={this.addExpense}>
+            Add expense
+          </button>
         </table>
       </Modal>
     );

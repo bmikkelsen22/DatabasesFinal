@@ -8,10 +8,12 @@ import {
   getCurrentMember,
   getGroupDetails,
   payExpense,
-  deleteExpense
+  deleteExpense,
+  addExpense
 } from "./group-api";
 import { PlaceholderPage } from "../error-component";
 import { ExpenseContainer } from "./expense-container";
+import { AddExpense } from "./add-expense";
 
 export interface GroupPageProps {
   groupId?: number;
@@ -57,12 +59,23 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
     }
     payExpense(expense.eID, currentMember.username)
       .then(() => {
-        const expPaid = expense.users.find(
+        const expPaidIdx = expense.users.findIndex(
           u => u.username === currentMember.username
         )!;
-        expPaid.pPaid = true;
+        const newExpensesPaid = expense.users.slice();
+        newExpensesPaid[expPaidIdx] = {
+          ...newExpensesPaid[expPaidIdx],
+          pPaid: 1
+        };
 
-        this.setState({ groupModel: { ...groupModel } });
+        const expIdx = groupModel.expenses.indexOf(expense);
+        const newExpenses = groupModel.expenses.slice();
+        newExpenses[expIdx] = {
+          ...newExpenses[expIdx],
+          users: newExpensesPaid
+        };
+
+        this.setState({ groupModel: { ...groupModel, expenses: newExpenses } });
       })
       .catch(e => alert(e));
   };
@@ -85,6 +98,23 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
       .catch(e => alert(e));
   };
 
+  onExpenseAdded = (expense: ExpenseModel) => {
+    const { groupModel } = this.state;
+    if (!groupModel) {
+      return;
+    }
+    addExpense(expense)
+      .then(() => {
+        const newGroupModel = {
+          ...groupModel,
+          expenses: [...groupModel.expenses, expense]
+        };
+
+        this.setState({ groupModel: newGroupModel });
+      })
+      .catch(e => alert(e));
+  };
+
   renderPageContent() {
     const { currentMember, groupModel } = this.state;
     if (!currentMember) {
@@ -97,6 +127,12 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
       <div>
         <h2>{groupModel.gName}</h2>
         <p>{groupModel.gDesc}</p>
+        <AddExpense
+          onExpenseAdded={this.onExpenseAdded}
+          groupMembers={groupModel.members}
+          gID={groupModel.gID}
+          username={currentMember.username}
+        />
         <ExpenseContainer
           expenses={groupModel.expenses}
           onDelete={this.onExpenseDeleted}

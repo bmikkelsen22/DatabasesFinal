@@ -1,6 +1,6 @@
 import { MemberModel, ExpenseModel, ExpensesPaid, GroupModel } from "../models";
 import { userMock } from "./expense-mocks";
-import { getRequest } from "../api-calls";
+import { getRequest, postRequest } from "../api-calls";
 
 export function getCurrentMember(groupMembers: MemberModel[]) {
   const currentUser = userMock; //TODO: load this from cookies
@@ -25,6 +25,13 @@ export async function payExpense(eID: number, username: string) {
     `../../api/payexpense.php?eid=${eID}&username=${username}`
   );
   if (res !== "Marked paid") {
+    throw new Error(res);
+  }
+}
+
+export async function addExpense(newExpense: ExpenseModel) {
+  const res = await postRequest("../../api/addexpense.php", newExpense);
+  if (res !== "Added expense") {
     throw new Error(res);
   }
 }

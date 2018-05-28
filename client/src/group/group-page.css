@@ -3,3 +3,7 @@
   padding: 4px 8px 4px 0;
 }
 
+.select-users-container {
+  display: flex;
+  flex-wrap: wrap;
+}
