@@ -14,6 +14,7 @@ import {
 import { PlaceholderPage } from "../error-component";
 import { ExpenseContainer } from "./expense-container";
 import { AddExpense } from "./add-expense";
+import "./group-page.css";
 
 export interface GroupPageProps {
   groupId?: number;

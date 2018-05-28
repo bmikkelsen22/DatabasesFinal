@@ -41,7 +41,7 @@ export class SelectUsers extends React.Component<
 
   render() {
     const usersJsx = this.state.selectedUsers.map((u, i) => (
-      <div>
+      <div className="select-user">
         <input
           type="checkbox"
           onChange={() => this.toggleUser(u, i)}
@@ -49,8 +49,10 @@ export class SelectUsers extends React.Component<
           key={u.username}
           value={u.username}
         />
-        {u.firstName} {u.lastName} <br />
-        <span className="small-text">{u.username}</span>
+        <div>
+          {u.firstName} {u.lastName} <br />
+          <span className="small-text">{u.username}</span>
+        </div>
       </div>
     ));
 

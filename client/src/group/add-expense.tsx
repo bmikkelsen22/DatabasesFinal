@@ -131,6 +131,7 @@ export class AddExpense extends React.Component<
                 />
               </td>
             </tr>
+            <h4>Which users should contribute?</h4>
             <SelectUsers
               users={this.props.groupMembers}
               onUserSelected={this.updateSelectedUsers}
