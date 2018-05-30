@@ -141,18 +141,18 @@ export class AddExpense extends React.Component<
                 />
               </td>
             </tr>
-            <h4>Which users should contribute?</h4>
-            <SelectUsers
-              selectMembers={this.state.selectedMembers}
-              onUserSelected={this.toggleUser}
-            />
-            <div className="align-right">
-              <button className="yellow-button" onClick={this.addExpense}>
-                Add expense
-              </button>
-            </div>
           </tbody>
         </table>
+        <h4>Which users should contribute?</h4>
+        <SelectUsers
+          selectMembers={this.state.selectedMembers}
+          onUserSelected={this.toggleUser}
+        />
+        <div className="align-right">
+          <button className="yellow-button" onClick={this.addExpense}>
+            Add expense
+          </button>
+        </div>
       </Modal>
     );
   }

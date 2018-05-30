@@ -17,13 +17,12 @@ $nextEid = $eidRes['nextEid'];
 $json = json_decode($_POST['json']);
 $eName = $json['eName'];
 $eDesc = $json['eDesc'];
-$eID = $json['eID'];
 $eCost = $json['eCostTotal'];
 $eNumUsers = $json['eNumUsers'];
 $gID = $json['gID'];
 
 //insert expense
-$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ($eName, $eDesc, $eID, $eCost, $eNumUsers, $gID)";
+$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ($eName, $eDesc, $nextEid, $eCost, $eNumUsers, $gID)";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
@@ -36,11 +35,10 @@ $query = "INSERT INTO ExpensesPaid (eID, username, pPaid) VALUES ";
 for ($i = 0; $i < count($json['users']); $i++) {
   $user = $json['users'][$i];
 
-  $eID = $user['eID'];
   $username = $user['username'];
   $pPaid = $user['pPaid'];
 
-  $query .= "($eID, $username, $pPaid)";
+  $query .= "($nextEid, $username, $pPaid)";
   if ($i < count($json['users']) - 1) {
     $query .= ", ";
   }
