@@ -14,7 +14,7 @@ $eidRes = $conn->query($query)->fetch_array(MYSQL_ASSOC);
 $nextEid = $eidRes['nextEid'];
 
 //load and check json payload
-$json = json_decode($_POST['json']);
+$json = json_decode($HTTP_RAW_POST_DATA);
 $eName = $json['eName'];
 $eDesc = $json['eDesc'];
 $eCost = $json['eCostTotal'];
@@ -26,7 +26,7 @@ $query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) V
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error adding expense:".$query);
+  die("Error adding expense: $query \n".$query.);
 }
 
 //insert expensePaid

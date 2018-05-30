@@ -30,9 +30,7 @@ export async function payExpense(eID: number, username: string) {
 }
 
 export async function addExpense(newExpense: ExpenseModel) {
-  const res = await postRequest("../../api/addexpense.php", {
-    json: newExpense
-  });
+  const res = await postRequest("../../api/addexpense.php", newExpense);
   if (res !== "Added expense") {
     throw new Error(res);
   }
