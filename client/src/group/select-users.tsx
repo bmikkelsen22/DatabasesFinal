@@ -15,7 +15,7 @@ export const SelectUsers: React.SFC<SelectUsersProps> = props => {
     <div className="select-user">
       <input
         type="checkbox"
-        onChange={() => this.toggleUser(u, i)}
+        onChange={() => props.onUserSelected(u, i)}
         checked={u.selected}
         key={u.username}
         value={u.username}
