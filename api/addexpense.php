@@ -26,7 +26,7 @@ $query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) V
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error adding expense");
+  die("Error adding expense:".$query);
 }
 
 //insert expensePaid
@@ -46,7 +46,7 @@ for ($i = 0; $i < count($json['users']); $i++) {
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error adding expensesPaid");
+  die("Error adding expensesPaid:".$query);
 }
 
 echo("Added expense");
