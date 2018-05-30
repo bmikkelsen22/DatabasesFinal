@@ -47,7 +47,7 @@ export class AddExpense extends React.Component<
       .map(m => {
         return {
           eID: 0,
-          username: this.props.username,
+          username: m.username,
           pPaid: 0
         };
       });
