@@ -42,13 +42,15 @@ export class AddExpense extends React.Component<
   };
 
   addExpense = () => {
-    const expensesPaid = this.state.selectedMembers.map(m => {
-      return {
-        eID: 0,
-        username: this.props.username,
-        pPaid: 0
-      };
-    });
+    const expensesPaid = this.state.selectedMembers
+      .filter(m => m.selected)
+      .map(m => {
+        return {
+          eID: 0,
+          username: this.props.username,
+          pPaid: 0
+        };
+      });
     this.toggleModal();
     this.props.onExpenseAdded({
       gID: this.props.gID,
