@@ -28,7 +28,9 @@ export class AddExpense extends React.Component<
       showModal: false,
       expenseDesc: "",
       expenseName: "",
-      selectedMembers: [],
+      selectedMembers: props.groupMembers.map(u => {
+        return { ...u, selected: false };
+      }),
       cost: 1
     };
   }
@@ -78,9 +80,15 @@ export class AddExpense extends React.Component<
     });
   };
 
-  updateSelectedUsers = (newSelectedUsers: SelectMember[]) => {
+  toggleUser = (user: SelectMember, index: number) => {
+    const newUser = {
+      ...user,
+      selected: !user.selected
+    };
+    const newUsers = this.state.selectedMembers.slice();
+    newUsers[index] = newUser;
     this.setState({
-      selectedMembers: newSelectedUsers
+      selectedMembers: newUsers
     });
   };
 
@@ -133,8 +141,8 @@ export class AddExpense extends React.Component<
             </tr>
             <h4>Which users should contribute?</h4>
             <SelectUsers
-              users={this.props.groupMembers}
-              onUserSelected={this.updateSelectedUsers}
+              selectMembers={this.state.selectedMembers}
+              onUserSelected={this.toggleUser}
             />
             <div className="align-right">
               <button className="yellow-button" onClick={this.addExpense}>
