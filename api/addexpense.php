@@ -46,7 +46,7 @@ for ($i = 0; $i < count($json['users']); $i++) {
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error adding expense");
+  die("Error adding expensesPaid");
 }
 
 echo("Added expense");
