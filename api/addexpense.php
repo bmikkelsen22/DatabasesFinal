@@ -27,7 +27,7 @@ $eNumUsers = $json['eNumUsers'];
 $gID = $json['gID'];
 
 //insert expense
-$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ($eName, $eDesc, $nextEid, $eCost, $eNumUsers, $gID)";
+$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ('$eName', '$eDesc', $nextEid, $eCost, $eNumUsers, $gID)";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
@@ -43,7 +43,7 @@ for ($i = 0; $i < count($json['users']); $i++) {
   $username = $user['username'];
   $pPaid = $user['pPaid'];
 
-  $query .= "($nextEid, $username, $pPaid)";
+  $query .= "($nextEid, '$username', $pPaid)";
   if ($i < count($json['users']) - 1) {
     $query .= ", ";
   }
