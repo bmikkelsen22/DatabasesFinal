@@ -1,6 +1,7 @@
 <?php
 include 'connectvars.php';
 
+error_reporting(E_ALL);
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
   http_response_code(500);
