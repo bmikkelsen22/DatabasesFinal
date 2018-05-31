@@ -13,41 +13,45 @@ $query = "SELECT MAX(eID) + 1 AS nextEid FROM Expenses";
 $eidRes = $conn->query($query)->fetch_array(MYSQL_ASSOC);
 $nextEid = $eidRes['nextEid'];
 
+//testing...
+echo $HTTP_RAW_POST_DATA;
+
 //load and check json payload
 $json = json_decode($HTTP_RAW_POST_DATA);
-$eName = $json['eName'];
-$eDesc = $json['eDesc'];
-$eCost = $json['eCostTotal'];
-$eNumUsers = $json['eNumUsers'];
-$gID = $json['gID'];
+echo $json['eName'];
+// $eName = $json['eName'];
+// $eDesc = $json['eDesc'];
+// $eCost = $json['eCostTotal'];
+// $eNumUsers = $json['eNumUsers'];
+// $gID = $json['gID'];
 
-//insert expense
-$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ($eName, $eDesc, $nextEid, $eCost, $eNumUsers, $gID)";
+// //insert expense
+// $query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, eNumUsers, gID) VALUES ($eName, $eDesc, $nextEid, $eCost, $eNumUsers, $gID)";
 
-if ($conn->query($query) !== TRUE) {
-  http_response_code(500);
-  die("Error adding expense: $query \n".$query.);
-}
+// if ($conn->query($query) !== TRUE) {
+//   http_response_code(500);
+//   die("Error adding expense: $query \n".$query.);
+// }
 
-//insert expensePaid
+// //insert expensePaid
 
-$query = "INSERT INTO ExpensesPaid (eID, username, pPaid) VALUES ";
-for ($i = 0; $i < count($json['users']); $i++) {
-  $user = $json['users'][$i];
+// $query = "INSERT INTO ExpensesPaid (eID, username, pPaid) VALUES ";
+// for ($i = 0; $i < count($json['users']); $i++) {
+//   $user = $json['users'][$i];
 
-  $username = $user['username'];
-  $pPaid = $user['pPaid'];
+//   $username = $user['username'];
+//   $pPaid = $user['pPaid'];
 
-  $query .= "($nextEid, $username, $pPaid)";
-  if ($i < count($json['users']) - 1) {
-    $query .= ", ";
-  }
-}
+//   $query .= "($nextEid, $username, $pPaid)";
+//   if ($i < count($json['users']) - 1) {
+//     $query .= ", ";
+//   }
+// }
 
-if ($conn->query($query) !== TRUE) {
-  http_response_code(500);
-  die("Error adding expensesPaid:".$query);
-}
+// if ($conn->query($query) !== TRUE) {
+//   http_response_code(500);
+//   die("Error adding expensesPaid:".$query);
+// }
 
-echo("Added expense");
+// echo("Added expense");
 ?>
