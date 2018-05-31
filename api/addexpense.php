@@ -18,7 +18,7 @@ $jsonStr = file_get_contents('php://input');
 
 //testing...
 echo $jsonStr;
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 //load and check json payload
 $json = json_decode($jsonStr, TRUE);
 echo $json['eName'];
