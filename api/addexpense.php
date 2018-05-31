@@ -13,11 +13,14 @@ $query = "SELECT MAX(eID) + 1 AS nextEid FROM Expenses";
 $eidRes = $conn->query($query)->fetch_array(MYSQL_ASSOC);
 $nextEid = $eidRes['nextEid'];
 
+# Get JSON as a string
+$jsonStr = file_get_contents('php://input');
+
 //testing...
-echo $HTTP_RAW_POST_DATA;
+echo $jsonStr;
 
 //load and check json payload
-$json = json_decode($HTTP_RAW_POST_DATA);
+$json = json_decode($jsonStr);
 echo $json['eName'];
 // $eName = $json['eName'];
 // $eDesc = $json['eDesc'];
