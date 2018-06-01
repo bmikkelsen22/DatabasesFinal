@@ -39,3 +39,9 @@ export interface NotificationsModel {
   nSender: string;
   nReceiver: string;
 }
+
+export interface NotificationModel {
+	 firstName: string;
+	 lastName: string;
+	 message: string;
+}

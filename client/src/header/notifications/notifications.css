@@ -1,0 +1,24 @@
+.dropdown {
+	 position: relative;
+	 display: inline-block;
+	 height: 40px;
+	 width: 200px;
+	 text-align: right;
+	 margin: 0px;
+}
+
+.dropdown-content {
+	 display: none;
+	 color: black;
+	 background-color: white;
+	 border: 1px solid black;
+	 text-align: left;
+}
+
+.dropdown-entry {
+	 border: 1px solid black;
+}
+
+.dropdown:hover .dropdown-content {
+	 display: block;
+}
