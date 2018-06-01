@@ -15,7 +15,7 @@ export async function getGroupDetails(gid?: number): Promise<GroupModel> {
 
 export async function deleteExpense(eID: number) {
   const res = await getRequest(`../../api/deleteexpense.php?eid=${eID}`);
-  if (res !== "Deleted") {
+  if (!res.includes("Deleted")) {
     throw new Error(res);
   }
 }
@@ -24,14 +24,14 @@ export async function payExpense(eID: number, username: string) {
   const res = await getRequest(
     `../../api/payexpense.php?eid=${eID}&username=${username}`
   );
-  if (res !== "Marked paid") {
+  if (!res.includes("Marked paid")) {
     throw new Error(res);
   }
 }
 
 export async function addExpense(newExpense: ExpenseModel) {
   const res = await postRequest("../../api/addexpense.php", newExpense);
-  if (res !== "Added expense") {
+  if (!res.includes("Added expense")) {
     throw new Error(res);
   }
 }
