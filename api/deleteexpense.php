@@ -8,14 +8,15 @@ if ($conn->connect_error) {
 
 //group details
 $eid = $_GET['eid'];
-$query = "DELETE FROM Expenses WHERE eID = '$eid'";
+
+$query = "DELETE FROM ExpensesPaid WHERE eID = '$eid'";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
   die("Error deleting: $query");
 }
 
-$query = "DELETE FROM ExpensesPaid WHERE eID = '$eid'";
+$query = "DELETE FROM Expenses WHERE eID = '$eid'";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
