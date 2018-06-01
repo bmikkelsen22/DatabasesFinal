@@ -12,12 +12,11 @@ export interface SelectUsersProps {
 
 export const SelectUsers: React.SFC<SelectUsersProps> = props => {
   const usersJsx = props.selectMembers.map((u, i) => (
-    <div className="select-user">
+    <div className="select-user" key={u.username}>
       <input
         type="checkbox"
         onChange={() => props.onUserSelected(u, i)}
         checked={u.selected}
-        key={u.username}
         value={u.username}
       />
       <div>
@@ -28,4 +27,4 @@ export const SelectUsers: React.SFC<SelectUsersProps> = props => {
   ));
 
   return <div className="select-users-container">{usersJsx}</div>;
-}
+};
