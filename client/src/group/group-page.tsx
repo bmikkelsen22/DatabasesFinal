@@ -108,7 +108,9 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
       return;
     }
     addExpense(expense)
-      .then(() => {
+      .then(eID => {
+        expense.eID = eID;
+        expense.users.forEach(u => (u.eID = eID));
         const newGroupModel = {
           ...groupModel,
           expenses: [...groupModel.expenses, expense]

@@ -52,5 +52,5 @@ if ($conn->query($query) !== TRUE) {
   die("Error adding expensesPaid:".$query);
 }
 
-echo("Added expense");
+echo($nextEid);
 ?>
