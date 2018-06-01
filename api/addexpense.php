@@ -19,7 +19,6 @@ $jsonStr = file_get_contents('php://input');
 
 //load and check json payload
 $json = json_decode($jsonStr, TRUE);
-echo $json['eName'];
 $eName = $json['eName'];
 $eDesc = $json['eDesc'];
 $eCost = $json['eCostTotal'];
