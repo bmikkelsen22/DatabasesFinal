@@ -3,3 +3,22 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
 }
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.yellow-button {
+  border: 1px solid rgb(197, 162, 49);
+  background-color: rgb(255, 214, 81);
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.gray-button {
+  border: 1px solid darkgray;
+  background-color: lightgray;
+  border-radius: 3px;
+  padding: 5px 10px;
+}

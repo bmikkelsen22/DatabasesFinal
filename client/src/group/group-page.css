@@ -1,0 +1,24 @@
+.add-expense-table td {
+  border: none;
+  padding: 4px 8px 4px 0;
+}
+
+.select-users-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.select-user {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid darkgray;
+  border-radius: 3px;
+  align-items: center;
+  margin: 3px;
+}
+
+.align-right {
+  text-align: right;
+}
