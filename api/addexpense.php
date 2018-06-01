@@ -23,11 +23,10 @@ echo $json['eName'];
 $eName = $json['eName'];
 $eDesc = $json['eDesc'];
 $eCost = $json['eCostTotal'];
-$eNumUsers = $json['eNumUsers'];
 $gID = $json['gID'];
 
 //insert expense
-$query = "INSERT INTO Expenses (eName, eDesc, eID, eCostTotal, gID) VALUES ('$eName', '$eDesc', '$nextEid', '$eCost', '$gID')";
+$query = "INSERT INTO `Expenses` (`eID`, `gID`, `eName`, `eDesc`, `eCostTotal`) VALUES ('$nextEid', '$gID', '$eName', '$eDesc', '$eCost')";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
