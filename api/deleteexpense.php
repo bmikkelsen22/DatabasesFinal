@@ -12,14 +12,14 @@ $query = "DELETE FROM Expenses WHERE eID = '$eid'";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error deleting");
+  die("Error deleting: $query");
 }
 
 $query = "DELETE FROM ExpensesPaid WHERE eID = '$eid'";
 
 if ($conn->query($query) !== TRUE) {
   http_response_code(500);
-  die("Error deleting");
+  die("Error deleting: $query");
 }
 
 echo("Deleted");
