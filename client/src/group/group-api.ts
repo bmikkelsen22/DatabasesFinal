@@ -32,7 +32,7 @@ export async function payExpense(eID: number, username: string) {
 export async function addExpense(newExpense: ExpenseModel) {
   const res = await postRequest("../../api/addexpense.php", newExpense);
   const eID = Number(res);
-  if (eID) {
+  if (!eID) {
     throw new Error(res);
   }
 
