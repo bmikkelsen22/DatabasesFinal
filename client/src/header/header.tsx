@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./header.css";
-import { UserModel } from "../models";
+import { NotificationContainer } from "./notifications/notifications";
+import { UserModel, NotificationModel } from "../models";
 
 export interface HeaderProps {
   currentUser?: UserModel;
@@ -30,6 +31,7 @@ export const Header: React.SFC<HeaderProps> = props => {
         </nav>
       </div>
       <div id="current-user-header">{currentUser}</div>
+      <NotificationContainer notifications={ [] } />
     </header>
   );
 };
