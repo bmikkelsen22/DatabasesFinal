@@ -24,7 +24,7 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 		}
 	}
 
-	onNotifModelLoaded = (nml: NotificationModel[]) => {
+	onNotifModelLoaded = ( nml: NotificationModel[] ) => {
 		this.setState({ notificationModel: nml });
 	};
 
@@ -40,8 +40,16 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 
 	render() {
 		const { notificationModel } = this.state;
-		if (!this.state.notificationModel)
-			return;
+		if (!this.state.notificationModel) {
+			return (
+			<div className="dropdown">
+			<span>Notifications</span>
+			<div className="dropdown-content">
+			<p>No Notifications At This Time</p>
+			</div>
+			</div>
+			);
+		}
 		const notifications = this.state.notificationModel
 			.map( e => (
 				<div className="dropdown-entry">
@@ -50,13 +58,13 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 				</div>
 			));
 
-	return (
-		<div className="dropdown">
-		<span>Notifications</span>
-		<div className="dropdown-content">
-			{notifications}
-		</div>
-		</div>
+		return (
+			<div className="dropdown">
+			<span>Notifications</span>
+			<div className="dropdown-content">
+				{notifications}
+			</div>
+			</div>
 	);
 	}
 }
