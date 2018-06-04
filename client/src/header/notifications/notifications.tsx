@@ -39,7 +39,6 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 	}
 
 	render() {
-		const { notificationModel } = this.state;
 		if (!this.state.notificationModel) {
 			return (
 			<div className="dropdown">
@@ -50,6 +49,7 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 			</div>
 			);
 		}
+		
 		const notifications = this.state.notificationModel
 			.map( e => (
 				<div className="dropdown-entry">
@@ -65,6 +65,6 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 				{notifications}
 			</div>
 			</div>
-	);
+		);
 	}
 }

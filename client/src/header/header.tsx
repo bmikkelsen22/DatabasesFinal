@@ -31,7 +31,7 @@ export const Header: React.SFC<HeaderProps> = props => {
         </nav>
       </div>
       <div id="current-user-header">{currentUser}</div>
-      <NotificationContainer notifications={ [] } />
+      <NotificationContainer username={currentUser} />
     </header>
   );
 };
