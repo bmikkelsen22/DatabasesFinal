@@ -9,15 +9,15 @@
         die('Could not connect' . mysqli_error());
     }
 
-    if (isset($_SESSION["username"])) {
+    if (false) {//isset($_SESSION["username"])) {
         $query = 'SELECT N.nMessage, U.firstName, U.lastName
         FROM Notifications N, Users U
-        WHERE N.nReceiver = ' . $_SESSION['username'] . ' AND U.username = N.sender';
+        WHERE N.nReceiver = ' . $_SESSION['username'] . ' AND U.username = N.nSender';
     }
     else {
         $query = 'SELECT N.nMessage AS message, U.firstName AS firstName, U.lastName AS lastName
         FROM Notifications N, Users U
-        WHERE N.nReceiver = "parker" AND U.username = N.sender';
+        WHERE N.nReceiver = "parker" AND U.username = N.nSender';
     }
 
     $result = $conn->query($query);

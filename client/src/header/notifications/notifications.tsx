@@ -20,7 +20,7 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 
 	componentDidMount() {
 		if (this.props.username) {
-				getNotificationList(this.props.username).then(this.onNotifModelLoaded);
+			getNotificationList(this.props.username).then(this.onNotifModelLoaded);
 		}
 	}
 
