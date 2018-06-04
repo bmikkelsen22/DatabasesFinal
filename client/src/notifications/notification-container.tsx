@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./notifications.css";
-import { NotificationModel } from "../../models";
+import { NotificationModel } from "../models";
 import { getNotificationList } from "./notification-api";
+import { Notification } from "./notification";
 
 export interface NotifProps {
 	username?: string;
@@ -48,14 +49,13 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 			</div>
 			</div>
 			);
-		}
+		} else {
 		
 		const notifications = this.state.notificationModel
 			.map( e => (
-				<div className="dropdown-entry">
-				<h3>{e.firstName} {e.lastName}</h3>
-				<p>{e.message}</p>
-				</div>
+				<Notification 
+				notification={e} 
+				/>
 			));
 
 		return (
@@ -66,5 +66,6 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 			</div>
 			</div>
 		);
+		}
 	}
 }
