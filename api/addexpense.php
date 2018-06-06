@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connectvars.php';
 
 error_reporting(E_ALL);
