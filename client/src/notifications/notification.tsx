@@ -9,8 +9,8 @@ export interface NotificationProps {
 export const Notification: React.SFC<NotificationProps> = props => {
 	return (
 		<div className="dropdown-entry">
-		<h3>{props.notification.firstName} {props.notification.lastName}</h3>
-		<p>{props.notification.message}</p>
+		<h3>{props.notification.eName} - {props.notification.gName}</h3>
+		<p>{props.notification.eDesc}</p>
 		</div>
 	);
 }

@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import "../site.css";
 import { Header } from "../header/header";
 import { Modal } from "../modal/modal";
-import { GroupModel, UserModel, ExpenseModel, MemberModel } from "../models";
+import { GroupModel, UserModel, ExpenseModel, MemberModel, GroupRequestModel } from "../models";
 import {
   getCurrentMember,
   getGroupDetails,
@@ -11,6 +11,7 @@ import {
   deleteExpense,
   addExpense
 } from "./group-api";
+import { RequestContainer } from "../requests/request-container.tsx";
 import { PlaceholderPage } from "../error-component";
 import { ExpenseContainer } from "./expense-container";
 import { AddExpense } from "./add-expense";
@@ -135,13 +136,16 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
       <div>
         <h2>{groupModel.gName}</h2>
         <p>{groupModel.gDesc}</p>
-        <AddExpense
+			<AddExpense
           onExpenseAdded={this.onExpenseAdded}
           groupMembers={groupModel.members}
           gID={groupModel.gID}
           username={currentMember.username}
         />
-        <ExpenseContainer
+
+		  <RequestContainer gID={groupModel.gID}/>
+        
+		  <ExpenseContainer
           expenses={groupModel.expenses}
           onDelete={this.onExpenseDeleted}
           onPay={this.onExpensePaid}
