@@ -42,7 +42,14 @@ export interface NotificationsModel {
 }
 
 export interface NotificationModel {
-	 firstName: string;
-	 lastName: string;
-	 message: string;
+	 eName: string;
+	 gName: string;
+	 eDesc: string;
+}
+
+export interface GroupRequestModel {
+	gID: number;	  
+	rMessage: string;
+	username: string;
+	fromGroup: boolean;
 }

@@ -3,33 +3,31 @@
     include 'connectvars.php';
     header('Content-type: application/json');   
 
-    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$conn) {
         http_response_code(500);
         die('Could not connect' . mysqli_error());
     }
 
-	 $username = "";
+	 $gid = $_GET['gid'];
+	 $query = "SELECT * FROM Requests WHERE gID='$gid'";
 
-	if (!isset($_SESSION["username"])) {
-		$username = $_GET['username'];
-	} else {
-		$username = $_SESSION["username"];
-	}
-
-	 $query = "SELECT eName, eDesc, gName FROM NotificationList WHERE username='$username'";
     $result = $conn->query($query);
     if (!$result) {
         http_response_code(500);
         die('Error with query.');
     }
 
-
-	 $requestArray = array();
-	 while($row = $result->fetch_array(MYSQL_ASSOC)) {
-	 	$requestArray[] = $row;
+	 if ($result->num_rows == 0) {
+	 	http_response_code(400);
+		die("No existant Requests.");
 	 }
 
-    echo json_encode($requestArray, JSON_NUMERIC_CHECK);
+	 $notificationArray = array();
+	 while($row = $result->fetch_array(MYSQL_ASSOC)) {
+	 	$notificationArray[] = $row;
+	 }
+
+    echo json_encode($notificationArray, JSON_NUMERIC_CHECK);
     $conn->close();
 ?>
