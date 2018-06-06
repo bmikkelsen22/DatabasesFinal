@@ -1,0 +1,12 @@
+[02-Oct-2017 21:49:17 America/Los_Angeles] PHP Notice:  Undefined variable: someString in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 10
+[02-Oct-2017 21:49:17 America/Los_Angeles] PHP Warning:  file_get_contents(asdsasdsa.txt): failed to open stream: No such file or directory in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 12
+[02-Oct-2017 21:49:17 America/Los_Angeles] PHP Fatal error:  Call to undefined function nonexistant_function() in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 14
+[02-Oct-2017 21:50:20 America/Los_Angeles] PHP Notice:  Undefined variable: someString in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 10
+[02-Oct-2017 21:50:21 America/Los_Angeles] PHP Warning:  file_get_contents(asdsasdsa.txt): failed to open stream: No such file or directory in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 12
+[02-Oct-2017 21:50:21 America/Los_Angeles] PHP Fatal error:  Call to undefined function nonexistant_function() in /nfs/stak/users/schutfoj/public_html/cs340F17/HW1/phperror.php on line 14
+[06-Apr-2018 00:53:59 America/Los_Angeles] PHP Notice:  Undefined variable: someString in /nfs/stak/users/schutfoj/public_html/cs340SP18/Act1/phperror.php on line 10
+[06-Apr-2018 00:53:59 America/Los_Angeles] PHP Warning:  file_get_contents(asdsasdsa.txt): failed to open stream: No such file or directory in /nfs/stak/users/schutfoj/public_html/cs340SP18/Act1/phperror.php on line 12
+[06-Apr-2018 00:53:59 America/Los_Angeles] PHP Fatal error:  Call to undefined function nonexistant_function() in /nfs/stak/users/schutfoj/public_html/cs340SP18/Act1/phperror.php on line 14
+[06-Apr-2018 14:46:43 America/Los_Angeles] PHP Notice:  Undefined variable: someString in /nfs/stak/users/haggertt/public_html/cs340/Act1SP18/phperror.php on line 10
+[06-Apr-2018 14:46:43 America/Los_Angeles] PHP Warning:  file_get_contents(asdsasdsa.txt): failed to open stream: No such file or directory in /nfs/stak/users/haggertt/public_html/cs340/Act1SP18/phperror.php on line 12
+[06-Apr-2018 14:46:43 America/Los_Angeles] PHP Fatal error:  Call to undefined function nonexistant_function() in /nfs/stak/users/haggertt/public_html/cs340/Act1SP18/phperror.php on line 14
