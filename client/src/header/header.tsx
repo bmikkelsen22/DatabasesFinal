@@ -14,7 +14,7 @@ export const Header: React.SFC<HeaderProps> = props => {
       <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/logout.php">Log out</a>
     </span>
   ) : (
-    <a className="nav-link" href="login.html">
+    <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/home.php">
       Login
     </a>
   );
