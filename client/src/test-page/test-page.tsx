@@ -24,7 +24,7 @@ export class TestPage extends React.Component<{}, TestPageState> {
   render() {
     return (
       <div>
-        <Header currentUser={userMock} />
+        <Header username={userMock.username} />
         <button onClick={this.toggleModal}>Show Modal</button>
         <Modal
           title="This is the modal title."

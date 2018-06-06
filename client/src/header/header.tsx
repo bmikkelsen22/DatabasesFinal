@@ -4,7 +4,7 @@ import { NotificationContainer } from "../notifications/notification-container";
 import { UserModel, NotificationModel } from "../models";
 
 export interface HeaderProps {
-  currentUser?: UserModel;
+  username?: string;
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
@@ -13,8 +13,8 @@ export const Header: React.SFC<HeaderProps> = props => {
       Login
     </a>
   );
-  const currentUser = props.currentUser ? (
-    <span>Logged in as {props.currentUser.username}</span>
+  const currentUser = props.username ? (
+    <span>Logged in as {props.username}</span>
   ) : (
     loginLink
   );

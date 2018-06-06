@@ -3,9 +3,9 @@ import * as ReactDOM from "react-dom";
 import { Header } from "./header";
 import { UserModel } from "../models";
 
-export function renderHeader(currentUser: UserModel, elementId: string) {
+export function renderHeader(username: string, elementId: string) {
   ReactDOM.render(
-    <Header currentUser={currentUser} />,
+    <Header username={username} />,
     document.getElementById(elementId)
   );
 }

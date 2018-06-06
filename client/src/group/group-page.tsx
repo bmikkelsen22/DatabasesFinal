@@ -10,7 +10,6 @@ import {
   deleteExpense,
   addExpense
 } from "./group-api";
-import { PlaceholderPage } from "../error-component";
 import { ExpenseContainer } from "./expense-container";
 import { AddExpense } from "./add-expense";
 import "./group-page.css";
@@ -153,7 +152,13 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentMember} />
+        <Header
+          username={
+            this.state.currentMember
+              ? this.state.currentMember.username
+              : undefined
+          }
+        />
         <div className="main-content">{this.renderPageContent()}</div>
       </div>
     );
@@ -161,7 +166,8 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
 }
 
 const url = new URL(window.location.href);
-const groupId = url.searchParams.get("gID") || url.searchParams.get("gid") || undefined;
+const groupId =
+  url.searchParams.get("gID") || url.searchParams.get("gid") || undefined;
 ReactDOM.render(
   <GroupPage groupId={Number(groupId)} />,
   document.getElementById("react-root")
