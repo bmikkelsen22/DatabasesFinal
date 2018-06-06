@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connectvars.php'; 
 header('Content-type: application/json');
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -62,6 +63,20 @@ while($row = $result->fetch_array(MYSQL_ASSOC)) {
   $expensesArray[] = $row;
 }
 $jsonResult["expenses"] = $expensesArray;
+
+//current user
+if (isset($_SESSION["username"])) {
+  $username = $_SESSION["username"];
+  $query = "SELECT Users.username, Users.firstName, Users.lastName, Users.email, Membership.mAdmin FROM Users, Membership WHERE Users.username = Membership.username AND Users.username = '$username'";
+  
+  $result = $conn->query($query);
+  if (!$result) {
+    http_response_code(500);
+    die("Error executing query");
+  }
+  $currentUser = $result->fetch_array(MYSQL_ASSOC);
+  $jsonResult["currentUser"] = $currentUser;
+}
 
 echo json_encode($jsonResult, JSON_NUMERIC_CHECK);
 $conn->close();

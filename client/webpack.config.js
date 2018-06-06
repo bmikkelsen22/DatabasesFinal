@@ -4,7 +4,8 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.tsx",
-    group: "./src/group/group-page.tsx"
+    group: "./src/group/group-page.tsx",
+    header: "./src/header/header-only.tsx"
   },
   devtool: "inline-source-map",
   module: {
@@ -20,11 +21,25 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          enforce: true
+        }
+      }
+    }
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".css"]
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "public", "out")
+    path: path.resolve(__dirname, "public", "out"),
+    libraryTarget: "var",
+    library: "ExpenseTracker"
   }
 };
