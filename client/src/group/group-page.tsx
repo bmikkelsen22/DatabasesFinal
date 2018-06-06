@@ -5,7 +5,6 @@ import { Header } from "../header/header";
 import { Modal } from "../modal/modal";
 import { GroupModel, UserModel, ExpenseModel, MemberModel } from "../models";
 import {
-  getCurrentMember,
   getGroupDetails,
   payExpense,
   deleteExpense,
@@ -40,7 +39,7 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
   onGroupModelLoaded = (gm: GroupModel) => {
     this.setState({
       groupModel: gm,
-      currentMember: getCurrentMember(gm.members)
+      currentMember: gm.currentUser
     });
   };
 
@@ -162,7 +161,7 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
 }
 
 const url = new URL(window.location.href);
-const groupId = url.searchParams.get("gID") || undefined;
+const groupId = url.searchParams.get("gID") || url.searchParams.get("gid") || undefined;
 ReactDOM.render(
   <GroupPage groupId={Number(groupId)} />,
   document.getElementById("react-root")

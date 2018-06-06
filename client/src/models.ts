@@ -4,6 +4,7 @@ export interface GroupModel {
   gDesc: string;
   expenses: ExpenseModel[];
   members: MemberModel[];
+  currentUser?: MemberModel;
 }
 
 export interface UserModel {
