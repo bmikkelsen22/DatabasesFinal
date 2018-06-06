@@ -1,5 +1,5 @@
 <?php 
-    //session_start();
+    session_start();
     include 'connectvars.php';
     header('Content-type: application/json');   
 
@@ -9,15 +9,10 @@
         die('Could not connect' . mysqli_error());
     }
 
-    if (false) {//isset($_SESSION["username"])) {
+    if (isset($_SESSION["username"])) {
         $query = 'SELECT N.nMessage, U.firstName, U.lastName
         FROM Notifications N, Users U
         WHERE N.nReceiver = ' . $_SESSION['username'] . ' AND U.username = N.nSender';
-    }
-    else {
-        $query = 'SELECT N.nMessage AS message, U.firstName AS firstName, U.lastName AS lastName
-        FROM Notifications N, Users U
-        WHERE N.nReceiver = "parker" AND U.username = N.nSender';
     }
 
     $result = $conn->query($query);
@@ -26,8 +21,12 @@
         die('Error with query.');
     }
 
-    $json_result = $result->fetch_array(MYSQL_ASSOC);
 
-    echo json_encode($json_result, JSON_NUMERIC_CHECK);
+	 $notificationArray = array();
+	 while($row = $result->fetch_array(MYSQL_ASSOC)) {
+	 	$notificationArray[] = $row;
+	 }
+
+    echo json_encode($notificationArray, JSON_NUMERIC_CHECK);
     $conn->close();
 ?>

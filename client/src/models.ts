@@ -45,3 +45,10 @@ export interface NotificationModel {
 	 lastName: string;
 	 message: string;
 }
+
+export interface GroupRequestModel {
+	gID: number;	  
+	rMessage: string;
+	username: string;
+	fromGroup: boolean;
+}
