@@ -11,10 +11,10 @@ export const Header: React.SFC<HeaderProps> = props => {
   const loginLink = props.username ? (
     <span>
       Logged in as {props.username}.
-      <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/logout.php">Log out</a>
+      <a className="nav-link" href="/~okonekp/cs340/DatabasesFinal/sessions/logout.php">Log out</a>
     </span>
   ) : (
-    <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/home.php">
+    <a className="nav-link" href="/~okonekp/cs340/DatabasesFinal/sessions/home.php">
       Login
     </a>
   );
@@ -30,10 +30,10 @@ export const Header: React.SFC<HeaderProps> = props => {
       <div id="nav-container">
         <h1 id="nav-title">Expense Tracker</h1>
         <nav>
-          <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/home.php">
+          <a className="nav-link" href="/~okonekp/cs340/DatabasesFinal/sessions/home.php">
             Home
           </a>
-          <a className="nav-link" href="/~mikkelsb/cs340/final/DatabasesFinal/sessions/viewGroups.php">
+          <a className="nav-link" href="/~okonekp/cs340/DatabasesFinal/sessions/viewGroups.php">
             Groups
           </a>
           {loginLink}
