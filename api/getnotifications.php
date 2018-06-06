@@ -8,10 +8,16 @@
         http_response_code(500);
         die('Could not connect' . mysqli_error());
     }
-	
-	 $username = $_GET['username'];
-	 $query = "SELECT eName, eDesc, gName FROM NotificationList WHERE username='$username'";
 
+	 $username = "";
+
+	if (!isset($_SESSION["username"])) {
+		$username = $_GET['username'];
+	} else {
+		$username = $_SESSION["username"];
+	}
+
+	 $query = "SELECT eName, eDesc, gName FROM NotificationList WHERE username='$username'";
     $result = $conn->query($query);
     if (!$result) {
         http_response_code(500);

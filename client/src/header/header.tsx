@@ -19,6 +19,12 @@ export const Header: React.SFC<HeaderProps> = props => {
     loginLink
   );
 
+  const notifBar = props.currentUser ? (
+	<NotificationContainer username={props.currentUser.username} />
+  ) : (
+  	undefined
+  );
+
   return (
     <header>
       <div id="nav-container">
@@ -31,7 +37,7 @@ export const Header: React.SFC<HeaderProps> = props => {
         </nav>
       </div>
       <div id="current-user-header">{currentUser}</div>
-      <NotificationContainer username={"parker"} />
-    </header>
+    		{notifBar}
+		</header>
   );
 };

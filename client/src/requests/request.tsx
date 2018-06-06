@@ -4,7 +4,7 @@ import { acceptRequest } from "./request-api";
 
 export interface GroupRequestProps {
 	groupRequest: GroupRequestModel;
-	isHidden: boolean;
+	handleClick: (() => void);
 }
 
 export const Request: React.SFC<GroupRequestProps> = props => {
@@ -12,12 +12,12 @@ export const Request: React.SFC<GroupRequestProps> = props => {
 
 	function handleClick() {
 		acceptRequest(props.groupRequest);
-		props.isHidden = true;
+		props.handleClick();
 	};
 
 	acceptBtn = (
 		<button className="accept-button"
-		onClick={() => acceptRequest(props.groupRequest)}>
+		onClick={() => handleClick()}>
 		Accept
 		</button>
 	);

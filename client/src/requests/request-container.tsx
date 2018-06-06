@@ -37,6 +37,14 @@ export class RequestContainer extends React.Component<RequestProps, RequestState
 		}
 	}
 
+	onRequestAccepted = (index: number) => {
+		if (this.state.requestmodel) {
+		const newRequest = this.state.requestmodel.slice()
+		newRequest.splice(index,1);
+		this.setState({ requestmodel: newRequest});
+		}
+	}
+
 	render() {
 		if (!this.state.requestmodel) {	
 			return(
@@ -47,10 +55,10 @@ export class RequestContainer extends React.Component<RequestProps, RequestState
 			);
 		} else {  
 			const requests = this.state.requestmodel
-				  .map( e => (
+				  .map( (e, i) => (
 				  		<Request
 						groupRequest={e}
-						isHidden={false}
+						handleClick={() => this.onRequestAccepted(i)}
 						/>
 				  ));
 			return (
