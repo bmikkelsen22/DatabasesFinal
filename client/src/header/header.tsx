@@ -22,8 +22,8 @@ export const Header: React.SFC<HeaderProps> = props => {
     loginLink
   );
 
-  const notifBar = props.currentUser ? (
-	<NotificationContainer username={props.currentUser.username} />
+  const notifBar = props.username ? (
+	<NotificationContainer username={props.username} />
   ) : (
   	undefined
   );

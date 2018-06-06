@@ -10,7 +10,7 @@ import {
   deleteExpense,
   addExpense
 } from "./group-api";
-import { RequestContainer } from "../requests/request-container.tsx";
+import { RequestContainer } from "../requests/request-container";
 import { ExpenseContainer } from "./expense-container";
 import { AddExpense } from "./add-expense";
 import "./group-page.css";
