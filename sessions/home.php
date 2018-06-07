@@ -131,6 +131,19 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script type = "text/javascript"  src="./js/home.js" > </script> 
+    <script type="text/javascript">
+        import * as React from "react";
+        import * as ReactDOM from "react-dom";
+        import { Header } from "./header";
+        import { UserModel } from "../models";
+
+        function renderHeader(username: string, elementId: string) {
+           ReactDOM.render(
+            <Header username={username} />,
+            document.getElementById(elementId)
+            );
+          }
+    </script>
 
 </head>
 
@@ -213,6 +226,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-in-form']) && $_PO
 			<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>
 			<h3 class="login-tab"><a href="#login-tab-content">Login</a></h3>
 		</div><!--.tabs-->
+
+
 
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
