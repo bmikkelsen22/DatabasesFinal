@@ -4,7 +4,6 @@
 		$_SESSION["count"] = 0;
 	if(!$_GET["count"] == "yes")
 		$_SESSION["count"] = $_SESSION["count"] + 1;
-	echo "<h1>".$_SESSION["username"]."</h1>";
 ?>
 
 
@@ -27,12 +26,13 @@
 	  ?>
 	</style>
   	<title>Group Listings</title>
-	<link rel="stylesheet" href=index.css">
+	<link rel="stylesheet" href="css/unify.css">
   </head>
 
 
   <body>
-    <form action="viewGroups.php" method="post">
+	<div class="page-content"> 
+	<form action="viewGroups.php" method="post">
       <input type="text" name="search" placeholder="Search for group..">
       <input type="submit" value=">>">
     </form>
@@ -99,6 +99,7 @@
 	mysqli_free_result($result);
 	mysqli_close($conn);
 ?>
+  </div>
   </body>
 
 </html>
