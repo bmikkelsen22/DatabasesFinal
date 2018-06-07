@@ -1,16 +1,8 @@
 <?php session_start(); ?>
 
-<header align="center" href="css/style.css"> 
-		Expense Tracker
-	</header>
-	
-	<nav>
-		<ul>
-		<?php
-		foreach ($content as $page => $location){
-			echo "<a href='$location?user=".$user."' ".($page==$currentpage?" class='active'":"").">".$page."  </a>";			
-		}
-		?>
-		</ul>
+<div id="react-header"></div>
 
-	</nav>
+<script src="/~okonekp/cs340/DatabasesFinal/client/out/header.bundle.js"></script>
+<script>
+	ExpenseTracker.renderHeader("<?php echo $_SESSION["username"]; ?>", "react-header");
+</script>
