@@ -214,6 +214,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-in-form']) && $_PO
 			<h3 class="login-tab"><a href="#login-tab-content">Login</a></h3>
 		</div><!--.tabs-->
 
+
+
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
 				<form class="signup-form" id="addForm" name="addForm" action="" method="post">
