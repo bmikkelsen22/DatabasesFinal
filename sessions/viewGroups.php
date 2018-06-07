@@ -4,7 +4,7 @@
 		$_SESSION["count"] = 0;
 	if(!$_GET["count"] == "yes")
 		$_SESSION["count"] = $_SESSION["count"] + 1;
-	echo "<h1> Welcome, ".$_SESSION["count"]."</h1>";
+	//echo "<h1> Welcome, ".$_SESSION["count"]."</h1>";
 ?>
 
 
@@ -111,14 +111,17 @@
 		$gidResult = mysqli_query($conn, $gidQuery) or die("Could not f= group name");
 		$gid = mysqli_fetch_array($gidResult)["gID"];
 
-		$insertQuery = "INSERT INTO Requests (rID, rMessage, username, gID, fromGroup)
-				VALUES ($newMax, '$applyMsgVal','$sessionUser', $gid, 0)";
-		$insertResult = mysqli_query($conn, $insertQuery)
-				or die("Insert query failed");
+		$checkQuery = "SELECT * FROM Membership WHERE gID =$gid AND username='$sessionUser'";
+		$checkResult = mysqli_query($conn, $checkQuery);
+		
+		if(mysqli_num_rows($checkResult==0) {
+			$insertQuery = "INSERT INTO Requests (rID, rMessage, username, gID, fromGroup)
+					VALUES ($newMax, '$applyMsgVal','$sessionUser', $gid, 0)";
+			$insertResult = mysqli_query($conn, $insertQuery)
+					or die("Insert query failed");
+		}
 		$_POST = array();
 	}
-
-
 
 	$query = "CREATE VIEW GroupsAndMembersInfo AS SELECT Groups.gID, 
 		  Groups.gName, Groups.gDesc, Membership.username,
@@ -127,9 +130,7 @@
                   INNER JOIN Users ON Users.username=Membership.username";
 	$result = mysqli_query($conn, $query) or die("Query failure");
 
-
 	$query = "SELECT gID, gName, gDesc FROM Groups";
-
 	if(isset($_POST['search'])) {
 		$searchVal = $_POST['search'];
 		$searchVal = preg_replace("#[^0-9a-z]#i","",$searchVal);
