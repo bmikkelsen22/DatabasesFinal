@@ -16,6 +16,10 @@
 	 text-align: left;
 }
 
+.dropdown-content a {
+	color: #28A55F;
+}
+
 .dropdown-entry {
 	 border: 1px solid black;
 }

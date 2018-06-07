@@ -40,7 +40,7 @@ export class NotificationContainer extends React.Component<NotifProps, NotifStat
 	}
 
 	render() {
-		if (!this.state.notificationModel) {
+		if (!this.state.notificationModel || this.state.notificationModel.length == 0) {
 			return (
 			<div className="dropdown">
 			<span>Notifications</span>

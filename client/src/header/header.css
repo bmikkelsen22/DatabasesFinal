@@ -1,6 +1,13 @@
 header {
   padding: 10px 30px;
+  background-color: #666;
+  color: white;
 }
+
+header a {
+	color: white;
+}
+
 #nav-container {
   display: flex;
   flex-wrap: wrap;

@@ -7,6 +7,12 @@ export interface GroupModel {
   currentUser?: MemberModel;
 }
 
+export interface GroupTileModel {
+	gID: number;
+	gName: string;
+	gDesc: string;
+}
+
 export interface UserModel {
   username: string;
   firstName: string;

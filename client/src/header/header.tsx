@@ -1,7 +1,8 @@
 import * as React from "react";
 import "./header.css";
 import { NotificationContainer } from "../notifications/notification-container";
-import { UserModel, NotificationModel } from "../models";
+import { GroupListContainer } from "../group_drop/group-list.tsx";
+import { UserModel, NotificationModel, GroupTileModel } from "../models";
 
 export interface HeaderProps {
   username?: string;
@@ -25,6 +26,12 @@ export const Header: React.SFC<HeaderProps> = props => {
   	undefined
   );
 
+  const groupBar = props.username ? (
+  	<GroupListContainer username={props.username} />
+  ) : (
+  	undefined
+  );
+
   return (
     <header>
       <div id="nav-container">
@@ -40,6 +47,7 @@ export const Header: React.SFC<HeaderProps> = props => {
         </nav>
       </div>
     		{notifBar}
+			{groupBar}
 		</header>
   );
 };
