@@ -30,13 +30,14 @@
 
 	
 	</style>
+	<link rel="stylesheet" href="./css/unify.css">
   	<title>Group Listings</title>
   </head>
 
 
   <body>
 
-   
+   <div class="page-content">
     <form action='viewGroups.php' method='post'>
       <input type='text' name='search' placeholder='Search for group..'>
       <input type='submit' value='SEARCH'>
@@ -114,7 +115,7 @@
 		$checkQuery = "SELECT * FROM Membership WHERE gID =$gid AND username='$sessionUser'";
 		$checkResult = mysqli_query($conn, $checkQuery);
 		
-		if(mysqli_num_rows($checkResult==0) {
+		if(mysqli_num_rows($checkResult==0)) {
 			$insertQuery = "INSERT INTO Requests (rID, rMessage, username, gID, fromGroup)
 					VALUES ($newMax, '$applyMsgVal','$sessionUser', $gid, 0)";
 			$insertResult = mysqli_query($conn, $insertQuery)
@@ -173,6 +174,7 @@
 	mysqli_free_result($insertResult);
 	mysqli_close($conn);
 ?>
+  </div>
   </body>
   <script type="text/javascript" src="js/addGroup.js"></script>
 </html>
