@@ -177,7 +177,7 @@
 </html>
 
 <?php
-	session_destroy();
+	
 ?>
 
 
