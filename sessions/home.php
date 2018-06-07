@@ -131,19 +131,6 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script type = "text/javascript"  src="./js/home.js" > </script> 
-    <script type="text/javascript">
-        import * as React from "react";
-        import * as ReactDOM from "react-dom";
-        import { Header } from "./header";
-        import { UserModel } from "../models";
-
-        function renderHeader(username: string, elementId: string) {
-           ReactDOM.render(
-            <Header username={username} />,
-            document.getElementById(elementId)
-            );
-          }
-    </script>
 
 </head>
 
