@@ -4,10 +4,7 @@
 		$_SESSION["count"] = 0;
 	if(!$_GET["count"] == "yes")
 		$_SESSION["count"] = $_SESSION["count"] + 1;
-<<<<<<< HEAD
-=======
 	//echo "<h1> Welcome, ".$_SESSION["count"]."</h1>";
->>>>>>> 0b989ccb7d2179d0419fc97b48cf299a1479a3a2
 ?>
 
 
@@ -34,23 +31,10 @@
 	
 	</style>
   	<title>Group Listings</title>
-<<<<<<< HEAD
-	<link rel="stylesheet" href="css/unify.css">
-=======
->>>>>>> 0b989ccb7d2179d0419fc97b48cf299a1479a3a2
   </head>
 
 
   <body>
-<<<<<<< HEAD
-	<div class="page-content"> 
-	<form action="viewGroups.php" method="post">
-      <input type="text" name="search" placeholder="Search for group..">
-      <input type="submit" value=">>">
-    </form>
-
-=======
->>>>>>> 0b989ccb7d2179d0419fc97b48cf299a1479a3a2
 
    
     <form action='viewGroups.php' method='post'>
@@ -189,7 +173,6 @@
 	mysqli_free_result($insertResult);
 	mysqli_close($conn);
 ?>
-  </div>
   </body>
   <script type="text/javascript" src="js/addGroup.js"></script>
 </html>
