@@ -2,7 +2,7 @@ import { MemberModel, NotificationModel, NotificationsModel } from "../models";
 import { getRequest, postRequest } from "../api-calls";
 
 export async function getNotificationList(nReceiver?: string): Promise<NotificationModel[]> {
-	const result = await getRequest(`../../api/getnotifications.php?username=${nReceiver}`);
+		  const result = await getRequest(`/~okonekp/cs340/DatabasesFinal/api/getnotifications.php?username=${nReceiver}`);
 
 	return JSON.parse(result);
 }

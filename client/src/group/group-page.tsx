@@ -130,6 +130,12 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
       return <p>Please log in.</p>;
     }
 
+	const requests = (this.state.currentMember && this.state.currentMember.mAdmin == true) ? (
+		  <RequestContainer gID={groupModel.gID}/> ) : (
+			undefined
+		  );
+
+
     return (
       <div>
         <h2>{groupModel.gName}</h2>
@@ -141,7 +147,7 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
           username={currentMember.username}
         />
 
-		  <RequestContainer gID={groupModel.gID}/>
+		  {requests}
         
 		  <ExpenseContainer
           expenses={groupModel.expenses}

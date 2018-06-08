@@ -12,6 +12,7 @@
 	<head>
 		<title>List Users</title>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/unify.css">
 	</head>
 <body>
 
@@ -21,6 +22,7 @@
 	include 'connectvars.php'; 
 	include "header.php";
 	$msg = "User Info";
+	echo "<div class='page-content'>";
 
 // change the value of $dbuser and $dbpass to your username and password
 	
@@ -136,6 +138,7 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		  <input type="submit" class="button" value="Update Info">
 </form>
 
+</div>
 </body>
 
 </html>
