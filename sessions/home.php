@@ -197,7 +197,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-in-form']) && $_PO
       $_SESSION["username"] = $username;
       //echo isset($_SESSION["username"]) . "</br>";
       session_write_close();
-      $msg ="<center><h2>Log In Success!</h2><br>Welcome $username!<p></center>";
+		$msg ="<center><h2>Log In Success!</h2><br>Welcome $username!<p></center>";
+		mysqli_close($conn);
+		echo "<script>window.location = './viewGroups.php'</script>";
     } else {
       $msg ="<h2>Error logging in</h2> Incorrect username or password<p>";
     }
