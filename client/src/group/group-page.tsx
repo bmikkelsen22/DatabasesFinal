@@ -12,6 +12,7 @@ import {
 } from "./group-api";
 import { RequestContainer } from "../requests/request-container";
 import { ExpenseContainer } from "./expense-container";
+import { UserManager } from "../users/users-container";
 import { AddExpense } from "./add-expense";
 import "./group-page.css";
 
@@ -135,6 +136,11 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
 			undefined
 		  );
 
+	const users = (this.state.currentMember && this.props.groupId) ? (
+			<UserManager groupId={groupModel.gID}/>
+		) : (
+			undefined
+		);
 
     return (
       <div>
@@ -148,6 +154,7 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
         />
 
 		  {requests}
+			{users}
         
 		  <ExpenseContainer
           expenses={groupModel.expenses}

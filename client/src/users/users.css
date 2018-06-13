@@ -1,0 +1,13 @@
+.users-wrapper {
+	display: flex;
+}
+
+.user-body {
+	margin: 20px;
+	padding: 6px;
+	border: #ccc 1px solid;
+}
+
+.user-body * {
+	margin: 6px;
+}
