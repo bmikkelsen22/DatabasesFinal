@@ -8,7 +8,7 @@
 
 	if (!$conn) {
 		http_response_code(500);
-		die("Error connecting to database");
+		die("Error connecting to database" . mysqli_error());
 	}
 
 	$jsonStr = file_get_contents('php://input');
@@ -17,9 +17,9 @@
 	$username = $json['username'];
 	$gID = $json['gID'];
 
-	$query = "DELETE FROM Membership WHERE username='$username' AND gID='$gID'";
+	$query = "DELETE FROM Membership WHERE username='$username' AND gID=$gID";
 
-	if (!conn->quer($query)) {
+	if (!$conn->query($query)) {
 		http_response_code(500);
 		die("Error Deleting User: \n$query");
 	}

@@ -43,33 +43,11 @@
       <input type='submit' value='SEARCH'>
     </form>
 
-    <button id='createGroup'>Create a New Group</button>
-    <div id='createGroupModal' class='modal'>
-      <div class='modal-content'>
-      <span class='close'>&times;</span>
-          <p>Enter group information below:</p>
-          <form action='viewGroups.php' method='post' name='newgroupform'>
-   	      <input type='text' name='groupName' placeholder='Enter a group name'>
-   	      <input type='text' name='groupDesc' placeholder='Enter a group description'>
-              <input type='submit' value='CREATE'>
-          </form>
-      </div>
-    </div>
 
-    <button id='applyGroup'>Apply to a Group</button>
-    <div id='applyGroupModal' class='modal'>
-      <div class='modal-content'>
-      <span class='close'>&times;</span>
-          <p>Enter name of group to apply to:</p>
-          <form action='viewGroups.php' method='post' name='newgroupform'>
-   	      <input type='text' name='applyName' placeholder='Group Name'>
-   	      <input type='text' name='applyMessage' placeholder='Enter a message'>
-              <input type='submit' value='APPLY'>
-          </form>
-      </div>
-    </div>
-
-
+<?php 
+	if (isset($_SESSION["username"])) 
+		readfile("./groupButtons.html");
+?>
    
 <?php
 	include "connectvars.php"; 
