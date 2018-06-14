@@ -155,7 +155,6 @@ export class GroupPage extends React.Component<GroupPageProps, GroupPageState> {
 
 		  {requests}
 			{users}
-        
 		  <ExpenseContainer
           expenses={groupModel.expenses}
           onDelete={this.onExpenseDeleted}
