@@ -89,9 +89,8 @@
 		$insertResult = mysqli_query($conn, $insertQuery)
 				or die("Insert query failed");
 		$sessionUser = $_SESSION['username'];
-		$insertAdmin = "UPDATE Membership SET mAdmin = 1
-                                WHERE username='$sessionUser'
-                                AND gID=$newMax";
+		$insertAdmin = "INSERT INTO Membership (gID, username, mAdmin)
+				VALUES ($newMax, '$sessionUser', 1)";
                 $adminResult = mysqli_query($conn, $insertAdmin)
 			       or die("Changing admin permissions failed.");
 		$_POST = array();
